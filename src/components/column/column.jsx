@@ -12,12 +12,12 @@ const Column = ({
     className = ''
  }) => {
     const classes = cx(
-        'container__column',
-        `container__column-xl-${xlarge}`,
-        `container__column-l-${large}`,
-        `container__column-m-${medium}`,
-        `container__column-s-${small}`,
-        `container__column-xs-${xsmall}`,
+        'row__column',
+        `row__column-xl-${xlarge}`,
+        `row__column-l-${large}`,
+        `row__column-m-${medium}`,
+        `row__column-s-${small}`,
+        `row__column-xs-${xsmall}`,
         className,
     );
 

@@ -1,32 +1,28 @@
 @import '../../styles/mixins.scss';
 
 .container__row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: inherit;
+    grid-auto-rows: auto;
+
     @include xsmall {
-        grid-column: span 4;
+        grid-template-columns: repeat(4, 1fr);
     }
 
     @include small {
-        grid-column: span 4;
+        grid-template-columns: repeat(4, 1fr);
     }
 
     @include medium {
-        grid-column: span 8;
+        grid-template-columns: repeat(8, 1fr);
     }
 
     @include large {
-        grid-column: span 12;
+        grid-template-columns: repeat(12, 1fr);
     }
 
     @include xlarge {
-        grid-column: span 12;
+        grid-template-columns: repeat(12, 1fr);
     }
-
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-auto-rows: auto;
-    
-    &.container__row-gutter {
-        grid-gap: 15px;
-    };
-    @include containerSizes(); 
 }

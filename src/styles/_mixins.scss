@@ -1,10 +1,14 @@
 // Columns Mixins
 @mixin columns($className, $columns) {
     @for $i from 1 through $columns {
-       &.container__column-#{$className}-#{$i} {
+       &.row__column-#{$className}-#{$i} {
            grid-column: span $i;
        }
     }
+}
+
+@mixin span($from, $to){
+    grid-column: #{$from} / #{$to};
 }
 
 // Container mixins

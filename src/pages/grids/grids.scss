@@ -1,4 +1,5 @@
 @import '../../styles/colours.scss';
+@import '../../styles/mixins.scss';
 
 .grids {
     .grid {
@@ -29,11 +30,41 @@
         }
     }
 
+    .flexible {
+        background-color: $padding-colour;
+
+        & > .container__row {
+            background-color: white;
+        }
+    }
+
     .red {
         border: red dashed 1px;
     }
 
     .blue {
         border: blue dashed 1px;
+    }
+
+    .row__column.centered {
+        @include xlarge {
+            @include span(5 , 9)
+        }
+
+        @include large {
+            @include span(5 , 9)
+        }
+
+        @include medium {
+            @include span(3 , 7)
+        }
+
+        @include small {
+            @include span(2 , 4)
+        }
+
+        @include xsmall {
+            @include span(2 , 4)
+        }
     }
 }

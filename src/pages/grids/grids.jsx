@@ -1,179 +1,178 @@
 import './grids.scss';
 import React from 'react';
 
-import { Container, FullContainer, FlexibleContainer, GutterContainer } from '../../components/container/container.jsx';
-import Column from '../../components/column/column.jsx';
+import { Container, FlexibleContainer, FullContainer } from '../../components/container/container.jsx';
 import Row from '../../components/row/row.jsx';
+import Column from '../../components/column/column.jsx';
 
-const TwelveColumnRow = ({ gutters = false }) => {
-    return (
-        <Row gutter={gutters}>
-            <Column xlarge={1} large={1} medium={1} small={1} xsmall={1} className='red'>
-                This is column 1
+const TwelveColumns = () => {
+    const columns = [];
+
+    for (let i = 1; i <= 12; i++) {
+        const column = (
+            <Column xsmall={1} small={1} medium={1} large={1} xlarge={1} key={i} className='red'>
+                This is column number {i}
             </Column>
-            <Column xlarge={1} large={1} medium={1} small={1} xsmall={1} className='red'>
-                This is column 2
-            </Column>
-            <Column xlarge={1} large={1} medium={1} small={1} xsmall={1} className='red'>
-                This is column 3
-            </Column>
-            <Column xlarge={1} large={1} medium={1} small={1} xsmall={1} className='red'>
-                This is column 4
-            </Column>
-            <Column xlarge={1} large={1} medium={1} small={1} xsmall={1} className='red'>
-                This is column 5
-            </Column>
-            <Column xlarge={1} large={1} medium={1} small={1} xsmall={1} className='red'>
-                This is column 6
-            </Column>
-            <Column xlarge={1} large={1} medium={1} small={1} xsmall={1} className='red'>
-                This is column 7
-            </Column>
-            <Column xlarge={1} large={1} medium={1} small={1} xsmall={1} className='red'>
-                This is column 8
-            </Column>
-            <Column xlarge={1} large={1} medium={1} small={1} xsmall={1} className='red'>
-                This is column 9
-            </Column>
-            <Column xlarge={1} large={1} medium={1} small={1} xsmall={1} className='red'>
-                This is column 10
-            </Column>
-            <Column xlarge={1} large={1} medium={1} small={1} xsmall={1} className='red'>
-                This is column 11
-            </Column>
-            <Column xlarge={1} large={1} medium={1} small={1} xsmall={1} className='red'>
-                This is column 12
-            </Column>
-        </Row>
-    )
+        )
+
+        columns.push(column);
+    }
+
+    return columns;
 }
 
 const Grids = () => {
     return (
         <div className='grids'>
             <Container>
-                <Column>
-                    <h1> This is a fixed grid </h1>
-                </Column>
+                <Row>
+                    <Column>
+                        <h1>
+                            This is a static container with padding on the sides
+                        </h1>
+                    </Column>
+                </Row>
             </Container>
-            <Container className='fixed blue'>
-                <TwelveColumnRow />
-                <Column className='red' xlarge={8} large={6} medium={7} small={3} xsmall={2}>
-                    <p>
-                        This is a 8 columns width column on xlarge screen
-                    </p>
-                    <p>
-                        This is a 6 columns width column on large screen
-                    </p>
-                    <p>
-                        This is a 7 columns width column on medium screen
-                    </p>
-                    <p>
-                        This is a 3 columns width column on small screen
-                    </p>
-                    <p>
-                        This is a 2 columns width column on large screen
-                    </p>
-                </Column>
+            <Container className='blue fixed'>
+                <Row>
+                    <TwelveColumns />
+                </Row>
+                <Row>
+                    <Column xlarge={10} large={8} medium={6} small={1} xsmall={2} className='red'>
+                        <p>This column will span 10 columns on xlarge</p>
+                        <p>This column will span 8 columns on large</p>
+                        <p>This column will span 6 columns on medium</p>
+                        <p>This column will span 1 columns on small</p>
+                        <p>This column will span 2 columns on xsmall</p>
+                    </Column>
+                </Row>
                 <Row>
                     <Column className='red'>
-                        This is in another row
+                        This will always be full width
                     </Column>
-                </Row>                
+                </Row>
+                <Row>
+                    <Column xlarge={6} large={6} medium={4} small={2} xsmall={2} className='red'>
+                        This will be always half of the screen
+                    </Column>
+                </Row>
+                <Row>
+                    <Column className='centered red'>
+                        This will be always centered.
+                    </Column>
+                </Row>
             </Container>
+
             <Container>
-                <Column>
-                    <h1> This is a container withouth paddings </h1>
-                </Column>
+                <Row>
+                    <Column>
+                        <h1> This is a flexible container </h1>
+                    </Column>
+                </Row>
             </Container>
-            <FullContainer className='blue'>
-                <TwelveColumnRow />
-                <Column className='red' xlarge={8} large={6} medium={7} small={3} xsmall={2}>
-                    <p>
-                        This is a 8 columns width column on xlarge screen
-                    </p>
-                    <p>
-                        This is a 6 columns width column on large screen
-                    </p>
-                    <p>
-                        This is a 7 columns width column on medium screen
-                    </p>
-                    <p>
-                        This is a 3 columns width column on small screen
-                    </p>
-                    <p>
-                        This is a 2 columns width column on large screen
-                    </p>
-                </Column>
+            <FlexibleContainer className='blue flexible' flex={8} gutters={50}>
+                <Row>
+                    <TwelveColumns />
+                </Row>
+                <Row>
+                    <Column xlarge={10} large={8} medium={6} small={1} xsmall={2} className='red'>
+                        <p>This column will span 10 columns on xlarge</p>
+                        <p>This column will span 8 columns on large</p>
+                        <p>This column will span 6 columns on medium</p>
+                        <p>This column will span 1 columns on small</p>
+                        <p>This column will span 2 columns on xsmall</p>
+                    </Column>
+                </Row>
                 <Row>
                     <Column className='red'>
-                        This is in another row
+                        This will always be full width
                     </Column>
-                </Row>  
-            </FullContainer>
-            <Container>
-                <Column>
-                    <h1> This is a container with variable padding </h1>
-                </Column>
-            </Container>
-            <FlexibleContainer className='flexible blue'>
-                <TwelveColumnRow />
-                <Column className='red' xlarge={8} large={6} medium={7} small={3} xsmall={2}>
-                    <p>
-                        This is a 8 columns width column on xlarge screen
-                    </p>
-                    <p>
-                        This is a 6 columns width column on large screen
-                    </p>
-                    <p>
-                        This is a 7 columns width column on medium screen
-                    </p>
-                    <p>
-                        This is a 3 columns width column on small screen
-                    </p>
-                    <p>
-                        This is a 2 columns width column on large screen
-                    </p>
-                </Column>
+                </Row>
                 <Row>
-                    <Column className='red'>
-                        This is in another row
+                    <Column xlarge={6} large={6} medium={4} small={2} xsmall={2} className='red'>
+                        This will be always half of the screen
                     </Column>
-                </Row>  
+                </Row>
+                <Row>
+                    <Column className='centered red'>
+                        This will be always centered.
+                    </Column>
+                </Row>
             </FlexibleContainer>
 
             <Container>
-                <Column>
-                    <h1> This is a container with gutters </h1>
-                </Column>
-            </Container>
-            <Container className='fixed'>
-                <TwelveColumnRow gutters={true}/>
-                <Row gutter={true}>
-                    <Column className='red' xlarge={8} large={6} medium={7} small={3} xsmall={2}>
-                        <p>
-                            This is a 8 columns width column on xlarge screen
-                        </p>
-                        <p>
-                            This is a 6 columns width column on large screen
-                        </p>
-                        <p>
-                            This is a 7 columns width column on medium screen
-                        </p>
-                        <p>
-                            This is a 3 columns width column on small screen
-                        </p>
-                        <p>
-                            This is a 2 columns width column on large screen
-                        </p>
+                <Row>
+                    <Column>
+                        <h1> This is a full screen container </h1>
                     </Column>
                 </Row>
-                <Row gutter={true}>
-                    <Column className='red'>
-                        This is in another row
-                    </Column>
-                </Row>  
             </Container>
+            <FullContainer className='blue'>
+                <Row>
+                    <TwelveColumns />
+                </Row>
+                <Row>
+                    <Column xlarge={10} large={8} medium={6} small={1} xsmall={2} className='red'>
+                        <p>This column will span 10 columns on xlarge</p>
+                        <p>This column will span 8 columns on large</p>
+                        <p>This column will span 6 columns on medium</p>
+                        <p>This column will span 1 columns on small</p>
+                        <p>This column will span 2 columns on xsmall</p>
+                    </Column>
+                </Row>
+                <Row>
+                    <Column className='red'>
+                        This will always be full width
+                    </Column>
+                </Row>
+                <Row>
+                    <Column xlarge={6} large={6} medium={4} small={2} xsmall={2} className='red'>
+                        This will be always half of the screen
+                    </Column>
+                </Row>
+                <Row>
+                    <Column className='centered red'>
+                        This will be always centered.
+                    </Column>
+                </Row>
+            </FullContainer>
+
+            <Container>
+                <Row>
+                    <Column>
+                        <h1> This is a flexible container with gutters </h1>
+                    </Column>
+                </Row>
+            </Container>
+            <FullContainer className='blue flexible' flex={8} gutters={15}>
+                <Row>
+                    <TwelveColumns />
+                </Row>
+                <Row>
+                    <Column xlarge={10} large={8} medium={6} small={1} xsmall={2} className='red'>
+                        <p>This column will span 10 columns on xlarge</p>
+                        <p>This column will span 8 columns on large</p>
+                        <p>This column will span 6 columns on medium</p>
+                        <p>This column will span 1 columns on small</p>
+                        <p>This column will span 2 columns on xsmall</p>
+                    </Column>
+                </Row>
+                <Row>
+                    <Column className='red'>
+                        This will always be full width
+                    </Column>
+                </Row>
+                <Row>
+                    <Column xlarge={6} large={6} medium={4} small={2} xsmall={2} className='red'>
+                        This will be always half of the screen
+                    </Column>
+                </Row>
+                <Row>
+                    <Column className='centered red'>
+                        This will be always centered.
+                    </Column>
+                </Row>
+            </FullContainer>
         </div>
     )
 };

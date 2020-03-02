@@ -1,6 +1,6 @@
 @import '../../styles/_mixins.scss';
 
-.container__column {
+.row__column {
     @include xsmall {
         @include columns('xs', 4);
     }

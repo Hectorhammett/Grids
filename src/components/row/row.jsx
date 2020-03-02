@@ -1,15 +1,16 @@
 import './row.scss';
 import React from 'react';
-import cx from 'classnames';
 
-const Row = ({ children, className, gutter = false, ...props }) => {
-    const classes = cx('container__row', className, { 'container__row-gutter' : gutter });
-    
+const Row = ({
+    children,
+    className,
+    ...props
+}) => {
     return (
-        <div className={classes}>
+        <div className='container__row'>
             {children}
         </div>
-    );
+    )
 }
 
 export default Row;

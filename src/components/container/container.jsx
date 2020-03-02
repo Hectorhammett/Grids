@@ -2,57 +2,46 @@ import './container.scss';
 import React from 'react';
 import cx from 'classnames';
 
-const Container = ({ children, className, ...props }) => {
+const Container = ({ children, className, gutters = 0, ...props }) => {
     const classes = cx('container', className);
-    
+
+    const style = {}
+    if (gutters) {
+        style.gridColumnGap = `${gutters}px`;
+    }
+
     return (
-        <div className={classes} {...props}>
-            <div className='grid'>
-                {children}
-            </div>
+        <div className={classes} style={style} {...props}>
+            {children}
         </div>
-    )
+    );
 }
 
 const FullContainer = ({ children, className, ...props }) => {
-    const classes = cx('container__full', className);
-    
+    const classes = cx('container--full', className);
     return (
-        <div className={classes} {...props}>
-            <div className='grid'>
-                {children}
-            </div>
-        </div>
+        <Container className={classes} {...props}>
+            {children}
+        </Container>
     )
 }
 
-const FlexibleContainer = ({ children, className, ...props }) => {
-    const classes = cx('container__flexible', className);
+const FlexibleContainer = ({ children, flex = 10, className, ...props }) => {
+    const classes = cx('container--flexible', className);
     
-    return (
-        <div className={classes} {...props}>
-            <div className='grid'>
-                {children}
-            </div>
-        </div>
-    )
-}
+    const style = {
+        'padding': `0 ${flex}%`
+    }
 
-const GutterContainer = ({ children, className, ...props }) => {
-    const classes = cx('container__gutters', className);
-    
     return (
-        <div className={classes} {...props}>
-            <div className='grid'>
-                {children}
-            </div>
-        </div>
+        <Container className={classes} style={style}>
+            {children}
+        </Container>
     )
-}
+};
 
 export {
     Container,
     FullContainer,
-    FlexibleContainer,
-    GutterContainer
+    FlexibleContainer
 }
