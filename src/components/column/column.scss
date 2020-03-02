@@ -1,0 +1,23 @@
+@import '../../styles/_mixins.scss';
+
+.container__column {
+    @include xsmall {
+        @include columns('xs', 4);
+    }
+
+    @include small {
+        @include columns('s', 4);
+    }
+
+    @include medium {
+        @include columns('m', 8);
+    }
+
+    @include large {
+        @include columns('l', 12);
+    }
+    
+    @include xlarge {
+        @include columns('xl', 12);
+    }
+}

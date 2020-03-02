@@ -1,0 +1,32 @@
+@import '../../styles/mixins.scss';
+
+.container__row {
+    @include xsmall {
+        grid-column: span 4;
+    }
+
+    @include small {
+        grid-column: span 4;
+    }
+
+    @include medium {
+        grid-column: span 8;
+    }
+
+    @include large {
+        grid-column: span 12;
+    }
+
+    @include xlarge {
+        grid-column: span 12;
+    }
+
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: auto;
+    
+    &.container__row-gutter {
+        grid-gap: 15px;
+    };
+    @include containerSizes(); 
+}

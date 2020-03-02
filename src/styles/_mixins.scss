@@ -1,0 +1,54 @@
+// Columns Mixins
+@mixin columns($className, $columns) {
+    @for $i from 1 through $columns {
+       &.container__column-#{$className}-#{$i} {
+           grid-column: span $i;
+       }
+    }
+}
+
+// Container mixins
+@mixin containerSizes {
+    @include xsmall {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include small {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include medium {
+        grid-template-columns: repeat(8, 1fr);
+    }
+}
+
+// Layout Mixins
+@mixin xsmall {
+    @media only screen and (max-width: 575px) {
+        @content;
+    }
+}
+
+@mixin small {
+    @media only screen and (min-width: 576px) and (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin medium {
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
+        @content;
+    }
+}
+
+@mixin large {
+    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+        @content;
+    }
+}
+
+@mixin xlarge {
+    @media only screen and (min-width: 1200px) {
+        @content;
+    }
+}

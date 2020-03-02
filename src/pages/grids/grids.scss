@@ -1,0 +1,39 @@
+@import '../../styles/colours.scss';
+
+.grids {
+    .grid {
+        background-color: white;
+    }
+
+    .fixed {
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background-color: $padding-colour; 
+            width: 15px;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            background-color: $padding-colour; 
+            width: 15px;
+        }
+    }
+
+    .red {
+        border: red dashed 1px;
+    }
+
+    .blue {
+        border: blue dashed 1px;
+    }
+}
